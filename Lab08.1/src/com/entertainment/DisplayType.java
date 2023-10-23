@@ -1,12 +1,11 @@
-/*
- * This code is sample code, provided as-is, and we make no
- * warranties as to its correctness or suitability for any purpose.
- *
- * We hope that it's useful to you.  Enjoy.
- * Copyright LearningPatterns Inc.
+package com.entertainment;/*
+ * There are 5 instances of DisplayType, listed below. NOT strings.
+ * There are 6 DisplayType objects are referenced as:
+ *  DisplayType.LED
+ *  DisplayType.OLED
+ *  [enum].values
+ *  [enum].valueOf
  */
-
-package com.entertainment;
 
 public enum DisplayType {
     LED, OLED, PLASMA, LCD, CRT
