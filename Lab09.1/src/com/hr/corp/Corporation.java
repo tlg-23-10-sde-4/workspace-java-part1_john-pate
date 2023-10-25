@@ -13,7 +13,7 @@ import gov.irs.TaxPayer;
 /**
  * Corporate entity - also pays taxes.
  */
-public class Corporation implements TaxPayer {
+public class Corporation implements TaxPayer {  // corporation IS-A TaxPayer
     private String name;
 
     public Corporation(String name) {
