@@ -20,9 +20,14 @@ public class Corporation implements TaxPayer {  // corporation IS-A TaxPayer
         setName(name);
     }
 
-    @Override  // interface TaxPayer
+    @Override   // interface TaxPayer
     public void payTaxes() {
         System.out.println(getName() + " paid no taxes - we lobbied hard and it worked");
+    }
+
+    @Override   // interface TaxPayer
+    public void fileReturn() {
+        System.out.println("Return not filed - we sent out lawyers instead");
     }
 
     public String getName() {

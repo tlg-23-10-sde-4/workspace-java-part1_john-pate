@@ -27,7 +27,7 @@ public class HourlyEmployee extends Employee {
     }
 
     public void payTaxes() {
-        System.out.println(getName() + " paid taxes of " + (rate * hours * HOURLY_TAX_RATE));
+        System.out.println(getName() + " paid taxes of " + (getRate() * getHours() * HOURLY_TAX_RATE));
     }
 
     public double getRate() {
