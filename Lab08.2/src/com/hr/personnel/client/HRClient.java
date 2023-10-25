@@ -12,6 +12,7 @@ import com.hr.personnel.Department;
 import com.hr.personnel.Employee;
 import com.hr.personnel.HourlyEmployee;
 import com.hr.personnel.SalariedEmployee;
+import com.hr.personnel.Executive;
 
 import java.time.LocalDate;
 
@@ -28,8 +29,9 @@ class HRClient {
         // add Employees to it
         dept.addEmployee(new SalariedEmployee("Jason", LocalDate.of(1990, 8, 24), 1175.0));
         dept.addEmployee(new SalariedEmployee("Julie", LocalDate.of(2000, 2, 2), 1275.0));
-        dept.addEmployee(new SalariedEmployee("Jungus", LocalDate.of(1995, 6, 10), 1400.0));
-        dept.addEmployee(new HourlyEmployee("Jubilant", LocalDate.of(1989, 11, 10), 32, 42));
+        dept.addEmployee(new HourlyEmployee("Jungus", LocalDate.of(1995, 6, 10), 28.0, 35));
+        dept.addEmployee(new HourlyEmployee("Jubilant", LocalDate.of(1989, 11, 10), 32.0, 42));
+        dept.addEmployee(new Executive("Jay", LocalDate.of(1986, 12, 5), 100_000.0));
 
         // list its Employees
         System.out.println("\nList employees:");
@@ -39,8 +41,12 @@ class HRClient {
         System.out.println("\nMake employees work:");
         dept.workEmployees();
 
-        // may its Employees
+        // make its Employees
         System.out.println("\nPay employees:");
         dept.payEmployees();
+
+        // make SalariedEmployees take vacation
+        System.out.println("\nForce holiday break");
+        dept.holidayBreak();
     }
 }
