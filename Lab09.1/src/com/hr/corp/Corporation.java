@@ -15,6 +15,7 @@ import gov.irs.TaxPayer;
  */
 public class Corporation implements TaxPayer {  // corporation IS-A TaxPayer
     private String name;
+    private double STANDARD_DEDUCTION = 1_000_000.0;
 
     public Corporation(String name) {
         setName(name);
@@ -28,6 +29,11 @@ public class Corporation implements TaxPayer {  // corporation IS-A TaxPayer
     @Override   // interface TaxPayer
     public void fileReturn() {
         System.out.println("Return not filed - we sent out lawyers instead");
+    }
+
+    @Override
+    public double getStandardDeduction() {
+        return STANDARD_DEDUCTION;
     }
 
     public String getName() {
