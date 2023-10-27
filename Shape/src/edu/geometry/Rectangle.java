@@ -22,8 +22,9 @@ public class Rectangle extends Shape {
         return dimension1;
     }
 
-    public void setDimension1(double dimension1) {
+    public double setDimension1(double dimension1) {
         this.dimension1 = dimension1;
+        return dimension1;
     }
 
     @Override
@@ -31,8 +32,9 @@ public class Rectangle extends Shape {
         return dimension2;
     }
 
-    public void setDimension2(double dimension2) {
+    public double setDimension2(double dimension2) {
         this.dimension2 = dimension2;
+        return dimension2;
     }
 
 }
