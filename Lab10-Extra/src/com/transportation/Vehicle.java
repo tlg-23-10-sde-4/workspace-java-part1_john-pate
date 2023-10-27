@@ -9,7 +9,7 @@ public abstract class Vehicle {
         this.vin = vin;
     }
 
-    // BUSINESS METHODS
+    // BUSINESS METHODS -- subclasses have the option to throw an exception, not the obligation
     public abstract void moveTo(String location) throws DestinationUnreachableException;
 
     // ACCESSOR METHODS
