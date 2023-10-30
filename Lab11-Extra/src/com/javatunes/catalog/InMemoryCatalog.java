@@ -168,18 +168,17 @@ public class InMemoryCatalog implements Catalog {
      * Another yes/no answer.
      */
     public boolean hasGenre(MusicCategory category) {
-        return findByCategory(category).size() > 0;
+        // return findByCategory(category).size() > 0;
 
-        /*boolean result = false;
+        boolean result = false;
         for (MusicItem item : catalogData) {
             if (item.getMusicCategory().equals(category)) {
                 result = true;
                 break;
             }
         }
-
         return result;
-        */
+
     }
 
 
