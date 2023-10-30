@@ -16,7 +16,7 @@ import java.util.List;
 // Your first job is to fulfill the contract that this class has signed.
 public class InMemoryCatalog implements Catalog {
 
-    private List<MusicItem> catalogData = new ArrayList<>(List.of(
+    private final List<MusicItem> catalogData = new ArrayList<>(List.of(
                    /* id    title                        artist                       releaseDate  price  musicCategory */
         new MusicItem(1L,  "Diva",                      "Annie Lennox",              "1992-01-04", 13.99, MusicCategory.POP),
         new MusicItem(2L,  "Dream of the Blue Turtles", "Sting",                     "1985-02-05", 14.99, MusicCategory.POP),
@@ -61,30 +61,95 @@ public class InMemoryCatalog implements Catalog {
      *    It's not just about removing redundancies - it will make the more complicated methods easier to write!
      */
 
+    @Override
+    public MusicItem findById(Long id) {    // 9, we have it    20, we don't have it
+        MusicItem item = null;
+        for (MusicItem currentItem : catalogData) {
+            if (currentItem.getId().equals(id)) {
+                item = currentItem;
+                break;
+            }
+        }
+        return item;
+    }
+
+    @Override
+    public Collection<MusicItem> findByKeyword(String keyword) {
+        return null;
+    }
+
+    @Override
+    public Collection<MusicItem> findByCategory(MusicCategory category) {
+        Collection<MusicItem> result = new ArrayList<>();
+        for (MusicItem item : catalogData ) {
+            if (item.getMusicCategory().equals(category)) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
+
+    @Override
+    public int size() {
+        return catalogData.size();
+    }
+
+    @Override
+    public Collection<MusicItem> getAll() {
+        return null;
+    }
+
     /**
      * TASK: find all MusicItems where title is same as artist.
      * For example, Madonna's first album is simply titled, "Madonna."
      */
+//    public Collection<MusicItem> findSelfTitled() {
+//        Collection<MusicItem> result = new ArrayList<>();
+////        for (MusicItem item : catalogData) {
+////            if (){
+////
+////            }
+//        return result;
+//        }
+//    }
 
 
     /**
      * TASK: find all "rock" items whose price is less than or equal to the specified price.
      */
+    public Collection<MusicItem> findCheapRock(double price) {
+        Collection<MusicItem> result = new ArrayList<>();
+        for (MusicItem item : catalogData) {
+            if (item.getPrice() <= price && item.getMusicCategory().equals(MusicCategory.ROCK)) {
+                result.add(item);
+            }
+        }
+        return result;
+    }
 
 
     /**
      * TASK: how many items of the specified genre (MusicCategory) do we sell?
      */
+//    public int numberInGenre(MusicCategory category) {
+//        return 0;
+//    }
 
 
     /**
      * TASK: determine average price of our low-cost, extensive catalog of music.
      */
+//    public double findAveragePrice () {
+//        return 0.0;
+//    }
 
 
     /**
      * TASK: find the cheapest item with the specified genre (MusicCategory).
      */
+//    public MusicItem findCheapest() {
+//        return null;
+//    }
 
 
     /**
@@ -102,6 +167,20 @@ public class InMemoryCatalog implements Catalog {
      * TASK: do we sell any items with the specified genre (MusicCategory)?
      * Another yes/no answer.
      */
+    public boolean hasGenre(MusicCategory category) {
+        return findByCategory(category).size() > 0;
+
+        /*boolean result = false;
+        for (MusicItem item : catalogData) {
+            if (item.getMusicCategory().equals(category)) {
+                result = true;
+                break;
+            }
+        }
+
+        return result;
+        */
+    }
 
 
     /**
@@ -120,6 +199,7 @@ public class InMemoryCatalog implements Catalog {
      * is a collection of items in that genre.  If there is a genre that we don't currently
      * sell, that key's associated value should be an empty collection, not null.
      */
+
 
 
     @Override
