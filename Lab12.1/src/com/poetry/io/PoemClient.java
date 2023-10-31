@@ -9,6 +9,8 @@
 package com.poetry.io;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 public class PoemClient {
 
@@ -33,7 +35,15 @@ public class PoemClient {
      * The try-with-resources below allows you to initialize the stream and auto-close it.
      */
     private static void readPoem() {
-        try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
+        // instead of this (goofy) BufferedReader null-check business for EOF, use Files
+        try {
+            String poem = Files.readString(Path.of("famous-poem.txt"));
+            System.out.println(poem);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*try (BufferedReader reader = new BufferedReader(new FileReader("famous-poem.txt"))) {
             String line;
             while ((line = reader.readLine()) != null) {    // null mean end of file (EOF)
                 System.out.println(line);
@@ -41,7 +51,7 @@ public class PoemClient {
         }
         catch (IOException e) {
             e.printStackTrace();
-        }
+        }*/
     }
 
     /**
@@ -56,13 +66,23 @@ public class PoemClient {
      * Use a try-with-resources to initialize the stream and auto-close it.
      */
     private static void writePoem() {
-        try (PrintWriter writer = new PrintWriter(new FileWriter("haiku.txt"))) {
+        String haiku = "Data streams. In. Out. \n" +
+                        "Knowledge flowing, mind to keys.\n" +
+                        "New worlds made by hand.";
+
+        try {
+            Files.writeString(Path.of("haiku2.txt"), haiku);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        /*try (PrintWriter writer = new PrintWriter(new FileWriter("haiku.txt"))) {
             writer.println("Data streams. In. Out.");
             writer.println("Knowledge flowing, mind to keys.");
             writer.println("New worlds made by hand.");
         }
         catch (IOException e) {
 
-        }
+        }*/
     }
 }
