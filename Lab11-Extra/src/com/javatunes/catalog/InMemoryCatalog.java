@@ -8,9 +8,7 @@
 
 package com.javatunes.catalog;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 
 // OF COURSE THIS CLASS DOESN'T COMPILE
 // Your first job is to fulfill the contract that this class has signed.
@@ -75,7 +73,14 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public Collection<MusicItem> findByKeyword(String keyword) {
-        return null;
+        Collection<MusicItem> result = new ArrayList<>();
+        for (MusicItem item : catalogData) {
+            if (item.equals(keyword)) {
+                result.add(item);
+                break;
+            }
+        }
+        return result;
     }
 
     @Override
@@ -96,22 +101,22 @@ public class InMemoryCatalog implements Catalog {
 
     @Override
     public Collection<MusicItem> getAll() {
-        return null;
+        return Collections.unmodifiableCollection(catalogData);
     }
 
     /**
      * TASK: find all MusicItems where title is same as artist.
      * For example, Madonna's first album is simply titled, "Madonna."
      */
-//    public Collection<MusicItem> findSelfTitled() {
-//        Collection<MusicItem> result = new ArrayList<>();
-////        for (MusicItem item : catalogData) {
-////            if (){
-////
-////            }
-//        return result;
-//        }
-//    }
+    public Collection<MusicItem> findSelfTitled() {
+        Collection<MusicItem> result = new ArrayList<>();
+        for (MusicItem item : catalogData) {
+            if (item.getTitle().equals(item.getArtist())){
+                result.add(item);
+            }
+        }
+        return result;
+    }
 
 
     /**
@@ -131,9 +136,15 @@ public class InMemoryCatalog implements Catalog {
     /**
      * TASK: how many items of the specified genre (MusicCategory) do we sell?
      */
-//    public int numberInGenre(MusicCategory category) {
-//        return 0;
-//    }
+    public int numberInGenre(MusicCategory category) {
+        int result = 0;
+        for (MusicItem item : catalogData) {
+            if (item.getMusicCategory().equals(category)) {
+                result ++;
+            }
+        }
+        return result;
+    }
 
 
     /**
@@ -198,7 +209,15 @@ public class InMemoryCatalog implements Catalog {
      * is a collection of items in that genre.  If there is a genre that we don't currently
      * sell, that key's associated value should be an empty collection, not null.
      */
+    public Map<MusicCategory, Collection<MusicItem>> getAllGenreMap() {
+        Map<MusicCategory, Collection<MusicItem>> result = new HashMap<>();
 
+        // TODO: for each category, call another method in this class (hint)
+        // that returns a Collection<MusicItem>? for that category
+        // and then put() (hint) that category and its collection in the result map.
+
+        return result;
+    }
 
 
     @Override

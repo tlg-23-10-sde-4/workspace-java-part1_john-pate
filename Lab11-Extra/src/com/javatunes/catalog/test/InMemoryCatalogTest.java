@@ -34,10 +34,10 @@ class InMemoryCatalogTest {
         // TASK method tests
         // testFindSelfTitled();
         // testFindCheapRock();
-        // testNumberInGenre();
+        testNumberInGenre();
         // testFindAveragePrice();
         // testFindCheapest();
-        testHasGenre();
+        // testHasGenre();
 
     }
 
@@ -60,7 +60,16 @@ class InMemoryCatalogTest {
     }
 
     private static void testNumberInGenre() {
-        // TODO
+        InMemoryCatalog catalog = new InMemoryCatalog();
+
+        int foundBlues = catalog.numberInGenre(MusicCategory.BLUES);
+        System.out.println("The number of Blues records is " + foundBlues);
+
+        int foundJazz = catalog.numberInGenre(MusicCategory.JAZZ);
+        System.out.println("The number of Jazz records is " + foundJazz);
+
+        int foundRock = catalog.numberInGenre(MusicCategory.ROCK);
+        System.out.println("The number of Rock records is " + foundRock);
     }
 
     private static void testFindCheapRock() {
@@ -71,7 +80,9 @@ class InMemoryCatalogTest {
     }
 
     private static void testFindSelfTitled() {
-        // TODO
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        Collection<MusicItem> selfTitled = catalog.findSelfTitled();
+        dump(selfTitled);
     }
 
     private static void testFindById() {
@@ -100,6 +111,9 @@ class InMemoryCatalogTest {
     }
 
     private static void testGetAll() {
+        InMemoryCatalog catalog = new InMemoryCatalog();
+        Collection<MusicItem> allItems = catalog.getAll();
+        dump(allItems);   // should throw exceptions
     }
 
     // helper method to show the collection vertically
